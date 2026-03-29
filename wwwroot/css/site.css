@@ -1,0 +1,168 @@
+:root {
+  --text-color: #000000;
+  --primary-color: #4f46e5;
+  --primary-hover: #4338ca;
+  --secondary-color: #64748b;
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --background-color: #f8fafc;
+  --card-bg: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-radius: 16px;
+  --glass-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+  --hover-shadow: 0 20px 40px -20px rgba(79, 70, 229, 0.25);
+}
+
+body[data-theme="dark"] {
+  color-scheme: dark;
+  --text-color: #ffffff;
+  --primary-color: #818cf8;
+  --primary-hover: #a5b4fc;
+  --secondary-color: #94a3b8;
+  --success-color: #34d399;
+  --danger-color: #f87171;
+  --background-color: #0f172a;
+  --card-bg: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --glass-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+  --hover-shadow: 0 20px 40px -20px rgba(129, 140, 248, 0.25);
+}
+
+html {
+  font-size: 14px;
+  position: relative;
+  min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-color) !important;
+  color: var(--text-color) !important;
+  margin-bottom: 80px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6, label, p, a:not(.btn), span:not(.badge), small,
+.text-muted, .text-secondary, .text-dark {
+  color: var(--text-color) !important;
+}
+
+/* Form Styles */
+.form-control, .form-select, option {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-color: rgba(100, 116, 139, 0.2) !important;
+}
+body[data-theme="dark"] .form-control,
+body[data-theme="dark"] .form-select {
+  color-scheme: dark !important;
+}
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  color: var(--text-color) !important;
+}
+.form-control::placeholder, .form-select::placeholder {
+  color: var(--text-color) !important;
+  opacity: 0.6 !important;
+}
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder, .form-floating > .form-select::placeholder {
+  color: transparent !important;
+}
+.form-floating > label::after {
+  background-color: transparent !important;
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.2);
+}
+
+/* Card Modernization */
+.card {
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, color 0.3s ease;
+}
+
+.card.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--hover-shadow);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+/* Navbar */
+.navbar {
+  backdrop-filter: blur(10px);
+  background-color: var(--card-bg) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: var(--text-color) !important;
+}
+.navbar-brand {
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--primary-color) !important;
+}
+
+/* Table */
+.table, .table td, .table th, .table tr, .table tbody, .table thead {
+  background-color: transparent !important;
+  color: var(--text-color) !important;
+}
+.table {
+  vertical-align: middle;
+}
+.table th {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  color: var(--text-muted) !important;
+  border-bottom: 2px solid rgba(100, 116, 139, 0.2) !important;
+}
+.table td {
+  border-bottom: 1px solid rgba(100, 116, 139, 0.1) !important;
+}
+.table tbody tr {
+  transition: background-color 0.2s;
+}
+.table tbody tr:hover {
+  background-color: rgba(100, 116, 139, 0.05) !important;
+}
+
+/* Footer Theme */
+.footer {
+  background-color: var(--card-bg) !important;
+  border-color: rgba(100, 116, 139, 0.2) !important;
+  color: var(--text-muted) !important;
+  transition: background-color 0.3s ease;
+}

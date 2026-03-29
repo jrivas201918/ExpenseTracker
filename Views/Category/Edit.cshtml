@@ -1,0 +1,85 @@
+@model ExpenseTracker.Models.Category
+
+@{
+    ViewData["Title"] = "Edit Category";
+}
+
+<div class="row mt-5 mb-5">
+    <div class="col-md-8 mx-auto">
+        <div class="card shadow-lg border-0 rounded-4 hover-lift">
+            <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <h3 class="fw-bold text-primary mb-2">Edit Category</h3>
+                    <p class="text-muted">Update @Model.Name settings</p>
+                </div>
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <input type="hidden" asp-for="Id" />
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label asp-for="Name" class="control-label fw-bold"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label asp-for="Group" class="control-label fw-bold"></label>
+                                <input asp-for="Group" class="form-control" />
+                                <span asp-validation-for="Group" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label asp-for="Color" class="control-label fw-bold">Color (Hex)</label>
+                                <div class="input-group">
+                                    <input type="color" id="colorPicker" class="form-control form-control-color w-25" value="@(Model.Color ?? "#71B37C")" title="Choose your color">
+                                    <input asp-for="Color" id="colorHex" class="form-control text-uppercase font-monospace" />
+                                </div>
+                                <span asp-validation-for="Color" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label asp-for="MonthlyBudget" class="control-label fw-bold">Monthly Budget (₱)</label>
+                                <input asp-for="MonthlyBudget" class="form-control" />
+                                <span asp-validation-for="MonthlyBudget" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label asp-for="DisplayOrder" class="control-label fw-bold">Display Order</label>
+                                <input asp-for="DisplayOrder" class="form-control" type="number" />
+                                <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2 mt-5 border-top pt-4">
+                        <a asp-action="Index" class="btn btn-danger fw-bold px-4">Cancel</a>
+                        <button type="submit" class="btn btn-primary fw-bold shadow-sm px-4">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        document.getElementById('colorPicker').addEventListener('input', function() {
+            document.getElementById('colorHex').value = this.value.toUpperCase();
+        });
+        document.getElementById('colorHex').addEventListener('input', function() {
+            if(/^#[0-9A-F]{6}$/i.test(this.value)) {
+                document.getElementById('colorPicker').value = this.value;
+            }
+        });
+    </script>
+}

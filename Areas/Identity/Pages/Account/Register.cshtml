@@ -1,0 +1,77 @@
+@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row justify-content-center mt-5 mb-5">
+    <div class="col-md-5">
+        <div class="card shadow-lg border-0 rounded-4 hover-lift">
+            <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold text-primary mb-2">Create an account</h2>
+                    <p class="text-muted">Join us to manage your expenses effortlessly</p>
+                </div>
+
+                <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                        <label asp-for="Input.Email">Email address</label>
+                        <span asp-validation-for="Input.Email" class="text-danger small mt-1 d-block"></span>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="form-floating flex-grow-1">
+                            <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" style="border-right: none;" />
+                            <label asp-for="Input.Password">Password</label>
+                        </div>
+                        <button class="btn btn-outline-secondary toggle-password bg-transparent" type="button" tabindex="-1" style="border-left: none; border-color: #dee2e6;">
+                            <i class="fs-6 text-muted" style="font-style: normal;">👁️</i>
+                        </button>
+                    </div>
+                    <span asp-validation-for="Input.Password" class="text-danger small mt-1 d-block mb-3"></span>
+
+                    <div class="input-group mb-4">
+                        <div class="form-floating flex-grow-1">
+                            <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" style="border-right: none;" />
+                            <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                        </div>
+                        <button class="btn btn-outline-secondary toggle-password bg-transparent" type="button" tabindex="-1" style="border-left: none; border-color: #dee2e6;">
+                            <i class="fs-6 text-muted" style="font-style: normal;">👁️</i>
+                        </button>
+                    </div>
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger small mt-1 d-block mb-4"></span>
+
+                    <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary fw-bold">Register</button>
+                    
+                    <div class="text-center mt-4">
+                        <p class="text-muted small">Already have an account? <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl" class="text-decoration-none fw-bold">Log in</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.querySelectorAll('.toggle-password').forEach(button => {
+            button.addEventListener('click', function() {
+                const input = this.closest('.input-group').querySelector('input');
+                const icon = this.querySelector('i');
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.textContent = '🙈';
+                } else {
+                    input.type = 'password';
+                    icon.textContent = '👁️';
+                }
+            });
+        });
+    </script>
+}

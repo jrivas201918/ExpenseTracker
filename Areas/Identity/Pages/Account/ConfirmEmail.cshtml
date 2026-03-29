@@ -1,0 +1,21 @@
+@page
+@model ConfirmEmailModel
+@{
+    ViewData["Title"] = "Confirm email";
+}
+
+<div class="row justify-content-center mt-5 mb-5">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-lg border-0 rounded-4 hover-lift">
+            <div class="card-body p-5 text-center">
+                <div class="fs-1 mb-3 text-success">✅</div>
+                <h3 class="fw-bold text-primary mb-2">@ViewData["Title"]</h3>
+                <partial name="_StatusMessage" model="Model.StatusMessage" />
+                
+                <div class="mt-4">
+                    <a asp-page="./Login" class="btn btn-primary fw-bold px-5 py-2 shadow-sm rounded-pill">Proceed to Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
