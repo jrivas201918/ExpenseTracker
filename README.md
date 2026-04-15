@@ -18,13 +18,6 @@ The **Next-Gen Expense Tracker** is a robust, full-stack ASP.NET Core web applic
 *   **📊 Dynamic Dashboard Analytics:** Track monthly trends via full-width line charts and monitor budget limits via circular doughnut graphs.
 *   **✉️ Robust Account Verification:** Integrated mock SMTP client enabling users to request Resend Email verifications securely using Base64 tokens.
 
-## 📸 Demo & Screenshots
-> **Note:** Upload your application screenshots here once deployed.
-
-*   *Dashboard View (Dark Mode)*: `[Insert Link to Dashboard Screenshot]`
-*   *Expenses Grid*: `[Insert Link to Expenses Grid Screenshot]`
-*   *Login/Register Gateway*: `[Insert Link to Auth Screenshot]`
-
 ## 🚀 Getting Started Locally
 1. Clone the repository: `git clone https://github.com/your-username/ExpenseTracker.git`
 2. Apply database migrations: `dotnet ef database update`
